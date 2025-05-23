@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useHeadlines } from '../hooks/useHeadlines';
 import HeadlineList from './HeadlineList';
+import './SortedHeadlines.scss'
 
 const SortedHeadlines: React.FC = () => {
   const { headlines, loading, error } = useHeadlines();
@@ -31,7 +32,7 @@ if (headlines.length > 0) {
 
   return (
     <div>
-      <div style={{ marginBottom: '1rem' }}>
+      <div className='sortedHeadlines__dropdown'>
         <label>
           Filter:
           <select value={filterMode} onChange={e => setFilterMode(e.target.value as 'more' | 'less')}>

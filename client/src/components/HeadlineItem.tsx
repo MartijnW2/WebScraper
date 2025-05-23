@@ -1,4 +1,5 @@
 import React from 'react';
+import "./HeadlineItem.scss"
 
 interface Headline {
   title: string;
@@ -13,11 +14,14 @@ interface Props {
 
 const HeadlineItem: React.FC<Props> = ({ headline }) => {
   return (
-    <li>
-      <a href={headline.link} target="_blank" rel="noopener noreferrer">
-        {headline.title} — 💬 {headline.comments} | ⭐ {headline.score}
+    <div className='headline__item'>
+      <a href={headline.link}>
+        {headline.title}
       </a>
-    </li>
+      <a className='headline__item-comment'>
+      💬 Number of comments: {headline.comments} ⭐Score: {headline.score}
+      </a>
+    </div>
   );
 };
 

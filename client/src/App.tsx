@@ -1,6 +1,6 @@
 import React from 'react';
-import './App.css';
 import SortedHeadlines from './components/SortedHeadlines';
+import './App.scss';
 
 function App() {
   return (
