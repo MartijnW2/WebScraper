@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios'; // ✅ Add this import
 import { useHeadlines } from '../hooks/useHeadlines';
 import HeadlineList from './HeadlineList';
-import './SortedHeadlines.scss'
+import './SortedHeadlines.scss';
 
 const SortedHeadlines: React.FC = () => {
   const { headlines, loading, error } = useHeadlines();
@@ -9,22 +10,23 @@ const SortedHeadlines: React.FC = () => {
   const [filterMode, setFilterMode] = useState('more');
   const [sortBy, setSortBy] = useState('comments');
 
+  useEffect(() => {
+    axios.post('http://localhost:5000/api/usage', {
+      filter: filterMode,
+      sort: sortBy,
+    }).catch(err => {
+      console.error('Failed to log usage', err);
+    });
+  }, [filterMode, sortBy]);
+
   const filterAndSortHeadlines = () => {
     const filtered = [...headlines].filter(h => {
       const wordCount = h.title.trim().split(/\s+/).length;
       return filterMode === 'more' ? wordCount > 5 : wordCount <= 5;
     });
-if (headlines.length > 0) {
-  console.log(typeof headlines[0].comments, typeof headlines[0].score);
-} else {
-  console.log('Headlines array is empty');
-}
+
     return filtered.sort((a, b) => {
-      if (sortBy === 'comments') {
-        return b.comments - a.comments;
-      } else {
-        return b.score - a.score;
-      }
+      return sortBy === 'comments' ? b.comments - a.comments : b.score - a.score;
     });
   };
 

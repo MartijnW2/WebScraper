@@ -16,7 +16,6 @@ export const scrapeHeadlinesFromURL = async (url: string): Promise<Headline[]> =
 
 export const fetchHTML = async (url: string): Promise<string> => {
   const response = await axios.get<string>(url);
-  console.log('✅ Raw HTML fetched from:', url);
   return response.data;
 };
 
@@ -47,12 +46,6 @@ export const parseHeadlines = (html: string): Headline[] => {
       });
     }
   });
-
-  if (headlines.length === 0) {
-    console.warn('⚠️ No headlines found — possible DOM change or empty page.');
-  } else {
-    console.log(`📰 Found ${headlines.length} headlines`);
-  }
 
   return headlines;
 };
