@@ -1,8 +1,8 @@
 name: Run Vitest Tests
 
 on:
-  push:  
-  pull_request:  
+  push:
+  pull_request:
 
 jobs:
   test:
@@ -10,23 +10,15 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: '18'
-
-      - name: Cache npm dependencies
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+          node-version: '18'  
 
       - name: Install dependencies
-        run: npm install
+        run: npm install 
 
       - name: Run Vitest tests
-        run: npm run test
+        run: npm run test  
