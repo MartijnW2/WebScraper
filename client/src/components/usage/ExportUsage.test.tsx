@@ -1,6 +1,5 @@
 import { describe, it, vi, expect, beforeEach, afterEach } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
-import React from 'react';
 import ExportUsageButton from './ExportUsage';
 
 describe('ExportUsageButton', () => {
