@@ -1,5 +1,6 @@
 {
   "name": "client",
+  "homepage": "https://MartijnW2.github.io/WebScraper",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -18,9 +19,12 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
     "test": "vitest run",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "dev": "vite",
+    "build": "vite build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "eslintConfig": {
     "extends": [
@@ -47,6 +51,7 @@
     "@types/node": "^22.15.21",
     "@vitejs/plugin-react": "^4.5.0",
     "@vitest/ui": "^3.1.4",
+    "gh-pages": "^6.3.0",
     "jsdom": "^26.1.0",
     "vitest": "^3.1.4"
   }
