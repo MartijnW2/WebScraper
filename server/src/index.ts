@@ -3,6 +3,7 @@ import cors from 'cors';
 import fs from 'fs';
 import path from 'path';
 import { scrapeHeadlinesFromURL } from './crawler/Scraper';
+import { exportUsageXlsxHandler } from '../logs/export-usage';
 
 const app = express();
 const port = 5000;
@@ -40,6 +41,8 @@ app.post('/api/usage', (req, res) => {
     res.status(200).send('Usage logged');
   });
 });
+
+app.get('/api/export-usage-csv', exportUsageXlsxHandler);
 
 app.listen(port, () => {
   console.log(`🚀 Server running at http://localhost:${port}`);
