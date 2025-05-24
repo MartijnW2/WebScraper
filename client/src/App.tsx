@@ -1,5 +1,5 @@
 import React from 'react';
-import SortedHeadlines from './components/SortedHeadlines';
+import SortedHeadlines from './components/headlines/SortedHeadlines';
 import './App.scss';
 
 function App() {

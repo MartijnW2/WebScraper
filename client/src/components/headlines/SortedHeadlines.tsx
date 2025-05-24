@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'; // ✅ Add this import
-import { useHeadlines } from '../hooks/useHeadlines';
+import { useHeadlines } from '../../hooks/useHeadlines';
 import HeadlineList from './HeadlineList';
 import './SortedHeadlines.scss';
-import ExportUsageButton from './exportUsage';
-
+import ExportUsageButton from '../usage/ExportUsage';
 const SortedHeadlines: React.FC = () => {
   const { headlines, loading, error } = useHeadlines();
 

@@ -26,8 +26,6 @@ export const useHeadlines = () => {
           score: extractNumbers(String(h.score)),
         }));
 
-        console.log('📰 Normalized Headlines:', normalizedHeadlines);
-
         setHeadlines(normalizedHeadlines);
       } catch (err) {
         setError('Failed to fetch headlines');
