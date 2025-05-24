@@ -2,8 +2,8 @@ import express from 'express';
 import cors from 'cors';
 import fs from 'fs';
 import path from 'path';
-import { scrapeHeadlinesFromURL } from './crawler/Scraper';
-import { exportUsageXlsxHandler } from '../logs/export-usage';
+import { scrapeHeadlinesFromURL } from './src/crawler/Scraper';
+import { exportUsageXlsxHandler } from './logs/export-usage';
 
 const app = express();
 const port = 5000;
