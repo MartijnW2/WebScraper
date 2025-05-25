@@ -19,7 +19,7 @@ export function exportUsageXlsxHandler(req: Request, res: Response) {
         timestamp: parsed.timestamp,
         filter: parsed.filter || '',
         sort: parsed.sort || '',
-        extra: parsed.extra || ''
+        browser: parsed.browser || ''
       };
     });
 

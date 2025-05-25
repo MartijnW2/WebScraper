@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
-import { useHeadlines } from '../../hooks/useHeadlines';
+import { useHeadlines } from '../../hooks/UseHeadlines';
 import HeadlineList from './HeadlineList';
 import './SortedHeadlines.scss';
 import ExportUsageButton from '../usage/ExportUsage';
