@@ -6,3 +6,15 @@
 {"timestamp":"2025-05-25T13:08:45.532Z","filter":"more","sort":"comments","extra":null}
 {"timestamp":"2025-05-25T13:37:40.951Z","filter":"more","sort":"comments","extra":null}
 {"timestamp":"2025-05-25T13:37:41.056Z","filter":"more","sort":"comments","extra":null}
+{"timestamp":"2025-05-25T13:49:31.775Z","filter":"more","sort":"comments","extra":null}
+{"timestamp":"2025-05-25T13:49:35.763Z","filter":"less","sort":"comments","extra":null}
+{"timestamp":"2025-05-25T13:50:04.148Z","filter":"more","sort":"comments","extra":null}
+{"timestamp":"2025-05-25T13:50:08.520Z","filter":"less","sort":"comments","extra":null}
+{"timestamp":"2025-05-25T13:50:10.929Z","filter":"less","sort":"score","extra":null}
+{"timestamp":"2025-05-25T13:50:14.510Z","filter":"more","sort":"comments","extra":null}
+{"timestamp":"2025-05-25T13:54:05.079Z","filter":"more","sort":"score","browser":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36","extra":null}
+{"timestamp":"2025-05-25T13:57:56.656Z","filter":"more","sort":"comments","browser":"Chrome","extra":null}
+{"timestamp":"2025-05-25T13:58:08.620Z","filter":"more","sort":"comments","browser":"Firefox","extra":null}
+{"timestamp":"2025-05-25T13:58:19.201Z","filter":"more","sort":"comments","browser":"Chrome","extra":null}
+{"timestamp":"2025-05-25T13:58:23.980Z","filter":"more","sort":"comments","browser":"Firefox","extra":null}
+{"timestamp":"2025-05-25T13:58:27.032Z","filter":"less","sort":"comments","browser":"Firefox","extra":null}

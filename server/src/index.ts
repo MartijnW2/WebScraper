@@ -26,6 +26,7 @@ app.post('/api/usage', (req, res) => {
     timestamp: new Date().toISOString(),
     filter: req.body.filter,
     sort: req.body.sort,
+    browser: req.body.browser,
     extra: req.body.extra || null,
   };
 

@@ -1,22 +1,33 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import { useHeadlines } from '../../hooks/useHeadlines';
 import HeadlineList from './HeadlineList';
 import './SortedHeadlines.scss';
 import ExportUsageButton from '../usage/ExportUsage';
+import { getBrowserName } from '../../utils/GetBrowserName';
+
 const SortedHeadlines: React.FC = () => {
   const { headlines, loading, error } = useHeadlines();
 
   const [filterMode, setFilterMode] = useState('more');
   const [sortBy, setSortBy] = useState('comments');
 
+  const didMount = useRef(false);
+
   useEffect(() => {
-    axios.post('http://localhost:5000/api/usage', {
-      filter: filterMode,
-      sort: sortBy,
-    }).catch(err => {
-      console.error('Failed to log usage', err);
-    });
+    if (didMount.current) {
+      const rawUA = navigator.userAgent;
+      const browser = getBrowserName(rawUA);
+      axios.post('http://localhost:5000/api/usage', {
+        filter: filterMode,
+        sort: sortBy,
+        browser,
+      }).catch(err => {
+        console.error('Failed to log usage', err);
+      });
+    } else {
+      didMount.current = true;
+    }
   }, [filterMode, sortBy]);
 
   const filterAndSortHeadlines = () => {
