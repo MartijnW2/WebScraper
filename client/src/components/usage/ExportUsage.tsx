@@ -1,4 +1,5 @@
 import React from 'react';
+import './ExportUsage.scss';
 
 const ExportUsageButton: React.FC = () => {
   const handleExport = async () => {
@@ -23,7 +24,7 @@ const ExportUsageButton: React.FC = () => {
   };
 
   return (
-    <button onClick={handleExport} data-testid="export-usage-button">
+    <button className='exportUsageButton' onClick={handleExport} data-testid="export-usage-button">
       Export Usage Data
     </button>
   );
