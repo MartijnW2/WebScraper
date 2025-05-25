@@ -1,0 +1,2 @@
+# Ignore server logs
+server/logs/usage.log
