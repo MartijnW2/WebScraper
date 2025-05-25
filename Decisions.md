@@ -11,6 +11,27 @@
 
 ---
 
+## Scraping Approach: Axios & Cheerio
+
+**Decision**: Use Axios for HTTP requests and Cheerio for HTML parsing.
+
+-  Axios provides a clean, promise-based API for fetching raw HTML efficiently.
+-  Cheerio offers a fast interface to traverse and extract data from the HTML without needing a full browser.
+-  This combination maximizes performance and simplicity for server-side scraping.
+-  **Trade-offs**: Unlike headless browsers, it can’t handle JavaScript-rendered content but is far faster and lighter for static HTML pages.
+
+---    
+
+## State Management
+
+**Decision**: Avoided Redux, used React state and custom hooks instead.
+
+- The app's state is local, simple, and scoped to individual components, no need for a global store.
+- React’s built-in state and context cover all current use cases.
+- **Trade-offs**: Redux can provide predictable state handling at scale, but introduces boilerplate and complexity that would be unnecessary overkill for   this project’s scope.
+
+---
+
 ## Custom Hooks
 
 **Decision**: Use `useHeadlines.ts` to encapsulate headline-related state and logic.
@@ -25,6 +46,16 @@
 
 - Keeps styles colocated with components and avoids class name collisions.
 - **Trade-offs**: Requires additional tooling support, but pays off in larger projects with many components.
+
+---
+
+## Stored data in log file
+
+**Decision**: `usage.log` is used to store usage data, this is preferred over a database for example SQLite 
+
+- No querying needed we just append, `fs.appendFile` is trivial, fast and does not require configuration.
+- We only read data when exporting.
+- Highly performant, we don't need indexing, transactions etc..
 
 ---
 
