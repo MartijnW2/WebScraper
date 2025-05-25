@@ -30,16 +30,25 @@ const SortedHeadlines: React.FC = () => {
     }
   }, [filterMode, sortBy]);
 
-  const filterAndSortHeadlines = () => {
-    const filtered = [...headlines].filter(h => {
-      const wordCount = h.title.trim().split(/\s+/).length;
-      return filterMode === 'more' ? wordCount > 5 : wordCount <= 5;
-    });
+const filterAndSortHeadlines = () => {
+  const filtered = [...headlines].filter(h => {
+    const wordCount = h.title.trim().split(/\s+/).length;
+    return filterMode === 'more' ? wordCount > 5 : wordCount <= 5;
+  });
 
-    return filtered.sort((a, b) => {
-      return sortBy === 'comments' ? b.comments - a.comments : b.score - a.score;
-    });
-  };
+  if (sortBy === 'date') {
+    return filtered;
+  }
+
+  return filtered.sort((a, b) => {
+    if (sortBy === 'comments') {
+      return b.comments - a.comments;
+    } else {
+      return b.score - a.score;
+    }
+  });
+};
+
 
   const filteredHeadlines = filterAndSortHeadlines();
 
@@ -60,6 +69,7 @@ const SortedHeadlines: React.FC = () => {
             <select value={sortBy} onChange={e => setSortBy(e.target.value as 'comments' | 'score')}>
               <option value="comments">Comments</option>
               <option value="score">Score</option>
+              <option value="date">Date</option>
             </select>
           </label>
         </div>
