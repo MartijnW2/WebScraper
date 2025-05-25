@@ -27,7 +27,6 @@ app.post('/api/usage', (req, res) => {
     filter: req.body.filter,
     sort: req.body.sort,
     browser: req.body.browser,
-    extra: req.body.extra || null,
   };
 
   const logPath = path.join(__dirname, '../logs/usage.log');
