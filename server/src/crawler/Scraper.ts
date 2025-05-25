@@ -26,6 +26,8 @@ export const parseHeadlines = (html: string): Headline[] => {
   const athingRows = $('.athing');
 
   athingRows.each((index, element) => {
+    if (index >= 30) return false; // stop iteration after 30 headlines
+
     const row = $(element);
     const anchor = row.find('.titleline a');
 

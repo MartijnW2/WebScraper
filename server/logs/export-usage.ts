@@ -19,19 +19,16 @@ export function exportUsageXlsxHandler(req: Request, res: Response) {
         timestamp: parsed.timestamp,
         filter: parsed.filter || '',
         sort: parsed.sort || '',
-        extra: parsed.extra || ''
+        browser: parsed.browser || ''
       };
     });
 
-    // Create a worksheet from JSON
     const worksheet = XLSX.utils.json_to_sheet(records);
     const workbook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(workbook, worksheet, 'Usage');
 
-    // Generate Excel file buffer
     const buffer = XLSX.write(workbook, { type: 'buffer', bookType: 'xlsx' });
 
-    // Set headers and send file
     res.setHeader('Content-Disposition', 'attachment; filename="usage.xlsx"');
     res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
     res.send(buffer);

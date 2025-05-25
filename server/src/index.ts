@@ -26,7 +26,7 @@ app.post('/api/usage', (req, res) => {
     timestamp: new Date().toISOString(),
     filter: req.body.filter,
     sort: req.body.sort,
-    extra: req.body.extra || null,
+    browser: req.body.browser,
   };
 
   const logPath = path.join(__dirname, '../logs/usage.log');

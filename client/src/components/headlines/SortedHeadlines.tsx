@@ -1,34 +1,54 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
-import { useHeadlines } from '../../hooks/useHeadlines';
+import { useHeadlines } from '../../hooks/UseHeadlines';
 import HeadlineList from './HeadlineList';
 import './SortedHeadlines.scss';
 import ExportUsageButton from '../usage/ExportUsage';
+import { getBrowserName } from '../../utils/GetBrowserName';
+
 const SortedHeadlines: React.FC = () => {
   const { headlines, loading, error } = useHeadlines();
 
   const [filterMode, setFilterMode] = useState('more');
   const [sortBy, setSortBy] = useState('comments');
 
+  const didMount = useRef(false);
+
   useEffect(() => {
-    axios.post('http://localhost:5000/api/usage', {
-      filter: filterMode,
-      sort: sortBy,
-    }).catch(err => {
-      console.error('Failed to log usage', err);
-    });
+    if (didMount.current) {
+      const rawUA = navigator.userAgent;
+      const browser = getBrowserName(rawUA);
+      axios.post('http://localhost:5000/api/usage', {
+        filter: filterMode,
+        sort: sortBy,
+        browser,
+      }).catch(err => {
+        console.error('Failed to log usage', err);
+      });
+    } else {
+      didMount.current = true;
+    }
   }, [filterMode, sortBy]);
 
-  const filterAndSortHeadlines = () => {
-    const filtered = [...headlines].filter(h => {
-      const wordCount = h.title.trim().split(/\s+/).length;
-      return filterMode === 'more' ? wordCount > 5 : wordCount <= 5;
-    });
+const filterAndSortHeadlines = () => {
+  const filtered = [...headlines].filter(h => {
+    const wordCount = h.title.trim().split(/\s+/).length;
+    return filterMode === 'more' ? wordCount > 5 : wordCount <= 5;
+  });
 
-    return filtered.sort((a, b) => {
-      return sortBy === 'comments' ? b.comments - a.comments : b.score - a.score;
-    });
-  };
+  if (sortBy === 'date') {
+    return filtered;
+  }
+
+  return filtered.sort((a, b) => {
+    if (sortBy === 'comments') {
+      return b.comments - a.comments;
+    } else {
+      return b.score - a.score;
+    }
+  });
+};
+
 
   const filteredHeadlines = filterAndSortHeadlines();
 
@@ -49,6 +69,7 @@ const SortedHeadlines: React.FC = () => {
             <select value={sortBy} onChange={e => setSortBy(e.target.value as 'comments' | 'score')}>
               <option value="comments">Comments</option>
               <option value="score">Score</option>
+              <option value="date">Date</option>
             </select>
           </label>
         </div>
