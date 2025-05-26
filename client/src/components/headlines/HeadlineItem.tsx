@@ -1,6 +1,6 @@
 import React from 'react';
 import "./HeadlineItem.scss"
-import { Headline } from '../types/Headline';
+import { Headline } from '../../types/Headline';
 
 interface Props {
   headline: Headline;

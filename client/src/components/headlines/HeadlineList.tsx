@@ -1,6 +1,6 @@
 import React from 'react';
 import HeadlineItem from './HeadlineItem';
-import { Headline } from '../types/Headline';
+import { Headline } from '../../types/Headline';
 
 interface Props {
   headlines: Headline[];
