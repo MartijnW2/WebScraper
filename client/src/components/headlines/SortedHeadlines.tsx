@@ -49,7 +49,6 @@ const filterAndSortHeadlines = () => {
   });
 };
 
-
   const filteredHeadlines = filterAndSortHeadlines();
 
   return (
