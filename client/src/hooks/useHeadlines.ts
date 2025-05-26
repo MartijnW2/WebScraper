@@ -1,13 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { extractNumbers } from '../utils/Regex';
-
-interface Headline {
-  title: string;
-  link: string;
-  comments: number;
-  score: number;
-}
+import { Headline } from '../types/Headline';
 
 export const useHeadlines = () => {
   const [headlines, setHeadlines] = useState<Headline[]>([]);
